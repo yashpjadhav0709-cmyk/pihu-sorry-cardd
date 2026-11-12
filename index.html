@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7dce9">
+<title>A Note for Pihu ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+:root{--ink:#65475a;--rose:#c45f89;--pink:#f4c5d8;--lilac:#d9c9f3;--cream:#fffafc}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:'DM Sans',sans-serif;background:linear-gradient(145deg,#fff0f5,#f8dce9 43%,#e9e0fb);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.24;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:22px 22px}
+main{min-height:100vh;display:grid;place-items:center;padding:28px 14px;position:relative}
+.orb{position:fixed;border-radius:50%;filter:blur(55px);opacity:.5;pointer-events:none}
+.orb.a{width:230px;height:230px;background:#fff;top:-75px;right:-60px}
+.orb.b{width:260px;height:260px;background:#d8b8ef;bottom:-100px;left:-100px}
+.card{width:min(100%,460px);position:relative;text-align:center;padding:30px 22px 26px;border:1px solid #ffffffc9;border-radius:30px;background:#fffaf4d9;box-shadow:0 25px 75px #95617b26;backdrop-filter:blur(15px);overflow:hidden}
+.card:before{content:"";position:absolute;inset:8px;border:1px solid #edc9d9;border-radius:23px;pointer-events:none}
+.content{position:relative;z-index:1}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#a87991}
+h1{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(37px,10vw,51px);line-height:1.1;color:#ad527a;margin:13px 0 7px}
+.subtitle{font-size:13px;color:#987b8c;margin:0 0 16px}
+.decor{font-size:19px;letter-spacing:10px;color:#ce8ca9;margin:12px 0}
+.envelopeArea{height:190px;display:grid;place-items:center}
+.envelope{width:205px;height:137px;position:relative;border:0;background:none;cursor:pointer;filter:drop-shadow(0 12px 12px #9e587326);transition:transform .25s}
+.envelope:hover{transform:translateY(-4px)}
+.env{position:absolute;inset:29px 0 0;border-radius:7px 7px 13px 13px;background:#e99dbb;overflow:hidden}
+.env:before{content:"";position:absolute;left:0;bottom:0;border-style:solid;border-width:0 102px 82px 0;border-color:transparent transparent #d982a6 transparent}
+.env:after{content:"";position:absolute;right:0;bottom:0;border-style:solid;border-width:0 0 82px 102px;border-color:transparent transparent #d982a6 transparent}
+.flap{position:absolute;z-index:4;top:29px;left:0;width:0;height:0;border-left:102px solid transparent;border-right:103px solid transparent;border-top:79px solid #f5c4d6;transform-origin:top;transition:transform .7s}
+.letter{position:absolute;z-index:2;left:17px;top:8px;width:171px;height:112px;background:#fffdfb;border-radius:6px;display:grid;place-items:center;color:#bf638b;font-family:'Playfair Display',serif;font-size:35px;transition:transform .7s}
+.seal{position:absolute;z-index:5;left:50%;top:73px;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;background:#bd6489;color:white;display:grid;place-items:center;font-size:18px;transition:opacity .3s}
+.envelope.open .flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .letter{transform:translateY(-63px)}
+.envelope.open .seal{opacity:0}
+.tap{font-size:12px;color:#a67f93;margin:-3px 0 8px}
+.note{display:none;text-align:left;background:#fffdfb;border:1px solid #f0d5e1;border-radius:20px;padding:21px 19px;margin-top:12px;box-shadow:0 10px 30px #a35c7d12;animation:rise .65s ease both}
+.note.show{display:block}
+.note h2{text-align:center;font-family:'Playfair Display',serif;font-weight:400;font-size:27px;color:#ad527a;margin:0 0 16px}
+.note p{font-size:14px;line-height:1.85;margin:0 0 13px;color:#6d5262}
+.note .signature{text-align:right;color:#b25b82;font-family:'Playfair Display',serif;font-style:italic;font-size:17px;margin-top:18px}
+.divider{text-align:center;color:#d49ab3;letter-spacing:7px;margin:16px 0}
+.actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:17px}
+button.action{border:0;border-radius:30px;padding:12px 17px;background:linear-gradient(110deg,#d77da1,#b77bc1);color:white;font:500 12px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 7px 18px #bd76a43b}
+button.secondary{background:#f6e8ef;color:#995a78;box-shadow:none}
+#final{display:none;text-align:center;color:#a95b7f;font-family:'Playfair Display',serif;font-style:italic;font-size:17px;line-height:1.6;margin:16px 0 0}
+#final.show{display:block;animation:rise .5s ease}
+.footer{font-size:10px;letter-spacing:1px;color:#b18b9f;margin-top:23px}
+.float{position:fixed;bottom:-25px;pointer-events:none;opacity:.75;animation:floatUp 7s linear forwards;z-index:5}
+.spark{position:fixed;pointer-events:none;animation:twinkle 2.5s ease-in-out infinite alternate;color:#fff}
+@keyframes floatUp{to{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+@keyframes twinkle{from{opacity:.2;transform:scale(.8)}to{opacity:.9;transform:scale(1.2)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="orb a"></div><div class="orb b"></div>
+<main>
+<section class="card">
+<div class="content">
+<div class="eyebrow">a little letter, from the heart</div>
+<h1>I'm Sorry</h1>
+<p class="subtitle">For the words I couldn't say the right way ♡</p>
+<div class="decor">✧ · 🌷 · ✧</div>
+<div class="envelopeArea">
+<button class="envelope" id="envelope" aria-label="Open your letter">
+<div class="env"></div><div class="letter">For you ♡</div><div class="flap"></div><div class="seal">♡</div>
+</button>
+</div>
+<div class="tap" id="tap">Tap the little envelope to open your letter</div>
+<article class="note" id="note">
+<h2>Dear Pihu, 🌸</h2>
+<p>I know things haven't been easy between us, and I'm genuinely sorry for the moments when my words or actions may have hurt you. I never wanted to make things heavier for you.</p>
+<p>I know you need space, and I want you to have the time and peace you need. I won't force a conversation or expect you to reply before you're ready. Your feelings matter, and I want to respect them.</p>
+<p>I won't pretend that your absence would be easy for me. I would miss you deeply, because you and the memories we've shared mean a lot to me. But I also understand that I need to take care of my own feelings, and I don't want you to feel responsible for them.</p>
+<div class="divider">✧ ♡ ✧</div>
+<p>And if being in a relationship isn't right for us, maybe we can still be best friends — <em>if you want that too.</em> No pressure, no expectations. I'd rather have an honest friendship, built on respect and understanding, than force a relationship that doesn't feel right.</p>
+<p>I'm not asking you to forget anything or decide anything today. I just wanted to say sorry, let you know that I care, and remind you that I'll respect whatever you feel is best for you.</p>
+<p class="signature">With a sincere apology,<br>Yash 🤍</p>
+<div class="actions">
+<button class="action" id="surprise">A little surprise ✨</button>
+<button class="action secondary" id="close">Close letter</button>
+</div>
+<div id="final">You deserve peace, kindness and happiness.<br>Take your time. 🌷</div>
+</article>
+<div class="footer">MADE WITH SINCERITY · NO PRESSURE · JUST AN APOLOGY</div>
+</div>
+</section>
+</main>
+<script>
+const envelope=document.getElementById('envelope'),note=document.getElementById('note'),tap=document.getElementById('tap');
+envelope.addEventListener('click',()=>{envelope.classList.add('open');note.classList.add('show');tap.textContent='A few words I wanted you to read';});
+document.getElementById('close').addEventListener('click',()=>{note.classList.remove('show');envelope.classList.remove('open');tap.textContent='Tap the little envelope to open your letter';});
+document.getElementById('surprise').addEventListener('click',()=>{
+ document.getElementById('final').classList.add('show');
+ const symbols=['♡','✿','✧','♥','🌸'];
+ for(let i=0;i<24;i++)setTimeout(()=>{
+  const s=document.createElement('span');s.className='float';s.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  s.style.left=Math.random()*100+'vw';s.style.fontSize=(14+Math.random()*19)+'px';s.style.animationDuration=(4+Math.random()*4)+'s';
+  document.body.appendChild(s);setTimeout(()=>s.remove(),8500);
+ },i*90);
+});
+for(let i=0;i<12;i++){const s=document.createElement('span');s.className='spark';s.textContent='✧';s.style.left=(Math.random()*96+2)+'%';s.style.top=(Math.random()*92+4)+'%';s.style.animationDelay=(Math.random()*3)+'s';document.body.appendChild(s);}
+</script>
+</body>
+</html>
